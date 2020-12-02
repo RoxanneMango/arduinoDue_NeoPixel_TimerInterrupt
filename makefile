@@ -37,4 +37,4 @@ clean:
 	cd $(OUTPUT) && del *.o *.bin *.elf *.map *.d *.a
 	@echo ("I clean . . .");
 	
-all: lib src flash
+all: src flash
