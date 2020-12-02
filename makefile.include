@@ -1,0 +1,26 @@
+PREFIX = ..\arduino_build
+
+ARDUINO_DUE_I = -I..\arduino\hardware\sam\1.6.12\libraries\Wire\src -I..\arduino\hardware\sam\1.6.12\libraries\SPI\src -I..\arduino\hardware\sam\1.6.12\system\libsam -I..\arduino\hardware\sam\1.6.12\system\CMSIS\CMSIS\Include -I..\arduino\hardware\sam\1.6.12\system\CMSIS\Device\ATMEL -I..\arduino\hardware\sam\1.6.12\cores\arduino -I..\arduino\hardware\sam\1.6.12\variants\arduino_due_x
+ARDUINO_DUE_AR = $(PREFIX)\core\variant.o ..\arduino\hardware\sam\1.6.12\variants\arduino_due_x\libsam_sam3x8e_gcc_rel.a $(PREFIX)\core\core.a
+LINK_OPTIONS = 
+
+CC = ..\arduino\tools\arm-none-eabi-gcc\4.8.3-2014q1\bin\arm-none-eabi-gcc
+CXX = ..\arduino\tools\arm-none-eabi-gcc\9.3.1-2020q2\bin\arm-none-eabi-g++
+AR = ..\arduino\tools\arm-none-eabi-gcc\9.3.1-2020q2\bin\arm-none-eabi-ar
+OBJC = ..\arduino\tools\arm-none-eabi-gcc\9.3.1-2020q2\bin\arm-none-eabi-objcopy
+SIZE = ..\arduino\tools\arm-none-eabi-gcc\9.3.1-2020q2\bin\arm-none-eabi-size
+
+PYTHON3 = py
+PORT_BUMP = ..\arduino\tools\bossac\1.6.1-arduino\open_close_port.py
+
+BOSSAC = ..\arduino\tools\bossac\1.6.1-arduino\bossac.exe
+BOSSAC_FLAGS = -i -d --port=COM3 -U false -e -w -v -b
+
+CFLAGS = -c -g -Os -Wall -Wextra -std=gnu11 -ffunction-sections -fdata-sections -nostdlib --param max-inline-insns-single=500 -Dprintf=iprintf -MMD -mcpu=cortex-m3 -mthumb -DF_CPU=84000000L -DARDUINO=10813 -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM -D__SAM3X8E__ -mthumb -DUSB_VID=0x2341 -DUSB_PID=0x003e -DUSBCON $(ARDUINO_DUE_I)
+CXXFLAGS = -c -g -Os -Wall -std=gnu++14 -ffunction-sections -fdata-sections -nostdlib -fno-threadsafe-statics --param max-inline-insns-single=500 -fno-rtti -fno-exceptions -MMD -mcpu=cortex-m3 -mthumb -DF_CPU=84000000L -DARDUINO=10813 -DARDUINO_SAM_DUE -DARDUINO_ARCH_SAM -D__SAM3X8E__ -mthumb -DUSB_VID=0x2341 -DUSB_PID=0x003e -DUSBCON $(ARDUINO_DUE_I)
+
+ADAFRUIT_NEOPIXEL_I = -I..\Adafruit_NeoPixel
+ADAFRUIT_NEOPIXEL_AR = ..\Adafruit_NeoPixel\build\Adafruit_NeoPixel.a
+
+RTC_I = -I..\RTCDue\src
+RTC_AR = ..\RTCDue\src\build\RTCDue_archive.a
