@@ -21,6 +21,3 @@ CXXFLAGS = -c -g -Os -Wall -std=gnu++14 -ffunction-sections -fdata-sections -nos
 
 ADAFRUIT_NEOPIXEL_I = -I..\Adafruit_NeoPixel
 ADAFRUIT_NEOPIXEL_AR = ..\Adafruit_NeoPixel\build\Adafruit_NeoPixel.a
-
-RTC_I = -I..\RTCDue\src
-RTC_AR = ..\RTCDue\src\build\RTCDue_archive.a
