@@ -16,12 +16,6 @@ main( void )
 	// set maximum voltage that can be measured on analog input pins to default (3.3v)
 	analogReference(AR_DEFAULT);
 
-	// Enable printf on serial output
-	RingBuffer rx_buffer;
-	RingBuffer tx_buffer;
-	UARTClass uart(UART, UART_IRQn, ID_UART, &rx_buffer, &tx_buffer);
-	uart.begin(9600);
-
 	// Enable interrupts on TimerClock 0 channel [0]
 	NVIC_EnableIRQ(TC0_IRQn);
 	pmc_enable_periph_clk(ID_TC0);
@@ -38,9 +32,6 @@ main( void )
 	//
 	NeoPixelController neoPixelController(ledNum, ledPin);
 	neoPixelController.init();
-
-	// attach powerLoss interrupt on powerLostPin and call neopixel clear() on interrupt
-	// attachInterrupt(digitalPinToInterrupt(powerLostPin), neoPixelController.clear(), FALLING);
 
 	for (;;)
 	{

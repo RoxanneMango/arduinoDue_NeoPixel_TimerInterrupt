@@ -25,8 +25,6 @@ TC0_Handler( void )
 				State::C : 
 			State::D;
 
-		printf("voltage : %f ; State : %d\n\r", voltage, (int)voltageState);
-
 		// reset count
 		Count = 500000;
 	}
